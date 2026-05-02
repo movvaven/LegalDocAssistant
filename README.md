@@ -1,5 +1,5 @@
 Legal Document Assistant Application with LangChain & LCEL
- - Author - Venkat Movva
+**Author - Venkat Movva**
 
 Overview
 This is a Retrieval-Augmented Generation (RAG) implementation developed using LangChain and LCEL for assisting Legal/HR professionals. This application analyzes the information present in the documents using an AI model and generates concised text from uploaded legal documents. This offloads a lot of emails between the legal department and general public on basic legal questions. 
