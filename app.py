@@ -1,6 +1,5 @@
 import os
 from dotenv import load_dotenv
-from langchain_openai import OpenAI
 import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from doc_processor import generate_answer, load_file, process_file, save_to_vector_db, search_info

@@ -1,6 +1,6 @@
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -26,7 +26,10 @@ def save_to_vector_db(chunks, embeddings_model, vector_db_path):
 
 
 def search_info(query, vector_db_path, embeddings_model):
-    vector_db = FAISS.load_local(vector_db_path, embeddings_model,allow_dangerous_deserialization=True)
+    try:
+        vector_db = FAISS.load_local(vector_db_path, embeddings_model, allow_dangerous_deserialization=True)
+    except TypeError:
+        vector_db = FAISS.load_local(vector_db_path, embeddings_model)
     query_embedding = embeddings_model.embed_query(query)
     relevant_chunks = vector_db.similarity_search_by_vector(query_embedding, k=3)
     return relevant_chunks
